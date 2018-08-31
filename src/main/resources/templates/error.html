@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>GitHub Resume Viewer</title>
+</head>
+
+<body>
+	
+    <h1>GitHub Resume Viewer error page</h1>
+	
+    <p th:if="${status}">
+        <b>Http status:</b> <span th:text="${status}"></span> 
+    </p>
+	
+    <p th:if="${uri}">
+        <b>File:</b> <span th:text="${uri}"></span> 
+    </p>
+	
+    <p th:if="${message}">
+        <b>Message:</b> <span th:text="${message}"></span> 
+    </p>
+	
+    <p th:if="${timestamp}">
+        <b>Occured:</b> <span th:text="${timestamp}"></span> 
+    </p>
+	
+</body>
+
+</html>

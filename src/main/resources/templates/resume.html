@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GitHub Resume Viewer</title>
+    <!--/*/ <th:block th:include="includes/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <h3>
+      Generated resume for user '<span th:text="${resume.login}">username</span>'
+    </h3>
+    <hr/>
+</header>
+
+<h2 style="color: grey;">General data</h2>
+<p>
+  <b>login:</b> <span th:text="${resume.login}">username</span>
+</p>
+<p th:if="${resume.blog}">
+  <b>blog:</b> <a th:href="${resume.blog}" th:text="${resume.blog}">https://github.com/resume/blog</a>
+</p>
+<p>
+  <b>number of repositories:</b> <span th:text="${#lists.size(resume.repos)}">7</span>
+</p>
+<p>
+  <b>programming languages:</b>
+  <ul>
+    <li th:each="lang : ${resume.reposLanguages}">
+      <span th:text="${lang.name}">Java</span> (<span th:text="${lang.percentage}">70</span>%)
+    </li>
+  </ul>
+</p>
+
+<h2 style="color: grey;">Repositories</h2>
+<div th:each="repo : ${resume.repos}">
+  <p>
+    <b>id:</b> <span th:text="${repo.id}">123</span>
+    <br/>
+    <b>name:</b> <span th:text="${repo.name}">repo1</span>
+    <br/>
+    <b>description:</b> <span th:text="${repo.description}">repo1 description</span>
+    <br/>
+    <b>language:</b> <span th:text="${repo.language}">Java</span>
+    <br/>
+    <b>url:</b> <a th:href="${repo.url}" th:text="${repo.url}">https://github.com/resume/repo1</a>
+  </p>
+  <hr/>
+</div>
+
+</body>
+</html>
